@@ -11,9 +11,9 @@ if let addresses = CFHostGetAddressing(host, &success)?.takeUnretainedValue() as
     theAddress = addresses.firstObject as? NSData {
     var hostname = [CChar](count: Int(NI_MAXHOST), repeatedValue: 0)
     if getnameinfo(UnsafePointer(theAddress.bytes), socklen_t(theAddress.length),
-        &hostname, socklen_t(hostname.count), nil, 0, NI_NUMERICHOST) == 0 {
-            if let numAddress = String.fromCString(hostname) {
-                print(numAddress)
-            }
+                   &hostname, socklen_t(hostname.count), nil, 0, NI_NUMERICHOST) == 0 {
+        if let numAddress = String.fromCString(hostname) {
+            print(numAddress)
+        }
     }
 }
