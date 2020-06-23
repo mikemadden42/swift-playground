@@ -4,6 +4,7 @@ project(swift-playgorund LANGUAGES Swift)
 
 set(PROGRAMS
     Chapter01
+    Countdown
     Lookup
     hello
     sysinfo
