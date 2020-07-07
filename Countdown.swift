@@ -2,7 +2,7 @@ import Foundation
 
 // https://stackoverflow.com/questions/40075850/swift-3-find-number-of-calendar-days-between-two-dates
 
-let startDate = "2019-04-08"
+let startDate = "2020-07-06"
 let dateFormatter = DateFormatter()
 dateFormatter.dateFormat = "yyyy-MM-dd"
 let formatedStartDate = dateFormatter.date(from: startDate)
