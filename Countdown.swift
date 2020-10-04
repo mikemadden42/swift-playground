@@ -1,3 +1,4 @@
+
 import Foundation
 
 // https://stackoverflow.com/questions/40075850/swift-3-find-number-of-calendar-days-between-two-dates
@@ -9,4 +10,5 @@ let formatedStartDate = dateFormatter.date(from: startDate)
 let currentDate = Date()
 let differenceOfDate = Calendar.current.dateComponents([.day], from: formatedStartDate!, to: currentDate)
 
-print(differenceOfDate)
+let days = differenceOfDate.day
+print(days!)
