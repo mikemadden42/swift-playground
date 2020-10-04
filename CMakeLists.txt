@@ -7,6 +7,7 @@ set(PROGRAMS
     Countdown
     Lookup
     hello
+    launch
     sysinfo
     )
 
