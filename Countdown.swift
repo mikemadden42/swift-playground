@@ -1,4 +1,3 @@
-
 import Foundation
 
 // https://stackoverflow.com/questions/40075850/swift-3-find-number-of-calendar-days-between-two-dates
