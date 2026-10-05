@@ -5,8 +5,10 @@ project(swift-playgorund LANGUAGES Swift)
 set(PROGRAMS
     Countdown
     Lookup
+    cores
     hello
     launch
+    newpass
     sysinfo
     )
 
