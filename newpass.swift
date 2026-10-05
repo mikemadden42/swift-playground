@@ -11,9 +11,14 @@ func generateRandomString(length: Int) -> String {
 func main() {
     let arguments = CommandLine.arguments.dropFirst()
 
+    if arguments.isEmpty {
+        fputs("Usage: newpass <length> [<length> ...]\n", stderr)
+        exit(1)
+    }
+
     for argument in arguments {
-        guard let length = Int(argument) else {
-            fputs("Error: Could not parse '\(argument)' as a valid number\n", stderr)
+        guard let length = Int(argument), length > 0 else {
+            fputs("Error: Could not parse '\(argument)' as a positive number\n", stderr)
             exit(1)
         }
 
