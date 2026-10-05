@@ -6,10 +6,10 @@ Sample Swift programs
 
 Thanks [MacStadium](https://www.macstadium.com/opensource) for supporting the FOSS community by offering FREE hosting for developers working on open source projects.
 
-The easiest way to build this project is to use the provided `build.sh` script.
+The easiest way to build this project is with `make`. On macOS it builds universal (x86_64 + arm64) binaries; on Linux it builds native binaries.
 
 ```bash
-./buid.sh
+make
 ```
 
 There is also support to build the project with `cmake`.
@@ -19,5 +19,5 @@ There is also support to build the project with `cmake`.
 Inspiration for building with `cmake` originated from this [project](https://github.com/compnerd/swift-build-examples).
 
 ```bash
-mkdir build; cd build; cmake -GNinja -DCMAKE_BUILD_TYPE=Release ..; ninja --verbose; strip hello sysinfo Chapter01
+mkdir build; cd build; cmake -GNinja -DCMAKE_BUILD_TYPE=Release ..; ninja --verbose; strip Countdown Lookup cores hello launch newpass sysinfo
 ```
