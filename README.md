@@ -6,10 +6,32 @@ Sample Swift programs
 
 Thanks [MacStadium](https://www.macstadium.com/opensource) for supporting the FOSS community by offering FREE hosting for developers working on open source projects.
 
+## Programs
+
+| Program | Description |
+| --- | --- |
+| `Countdown` | Prints the number of days since 2020-07-06. |
+| `Lookup` | Resolves `www.stackoverflow.com` and prints its IP addresses. |
+| `cores` | Prints the number of logical and physical CPU cores. |
+| `hello` | Prints "Hello world!". |
+| `launch` | Opens https://www.google.com in the default browser. |
+| `newpass` | Prints a random alphanumeric password for each length given, e.g. `newpass 16 32`. |
+| `sysinfo` | Prints user, host, CPU, memory, uptime, and OS information. |
+
+All programs support macOS and Linux. On Linux, `launch` uses `xdg-open`.
+
+## Building
+
 The easiest way to build this project is with `make`. On macOS it builds universal (x86_64 + arm64) binaries; on Linux it builds native binaries.
 
 ```bash
 make
+```
+
+Remove the built binaries with:
+
+```bash
+make clean
 ```
 
 There is also support to build the project with `cmake`.
