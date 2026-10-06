@@ -7,7 +7,10 @@ endif()
 # CMake ignores CMAKE_OSX_DEPLOYMENT_TARGET for Swift, so pass the minimum
 # macOS version via the target triple, matching the Makefile.
 if(CMAKE_HOST_APPLE AND NOT CMAKE_Swift_COMPILER_TARGET)
-  if(CMAKE_OSX_ARCHITECTURES)
+  list(LENGTH CMAKE_OSX_ARCHITECTURES arch_count)
+  if(arch_count GREATER 1)
+    message(FATAL_ERROR "CMake cannot build universal Swift binaries; use make instead")
+  elseif(CMAKE_OSX_ARCHITECTURES)
     set(arch ${CMAKE_OSX_ARCHITECTURES})
   else()
     execute_process(COMMAND uname -m
@@ -39,13 +42,19 @@ set(PROGRAMS
     sysinfo
     )
 
+if(NOT CMAKE_STRIP)
+  message(WARNING "strip not found; binaries will not be stripped")
+endif()
+
 set(strip_configs $<OR:$<CONFIG:Release>,$<CONFIG:MinSizeRel>>)
 
 foreach(program ${PROGRAMS})
   add_executable(${program} ${program}.swift)
-  add_custom_command(TARGET ${program} POST_BUILD
-                     COMMAND $<${strip_configs}:${CMAKE_STRIP}>
-                             $<${strip_configs}:$<TARGET_FILE:${program}>>
-                     COMMAND_EXPAND_LISTS
-                     VERBATIM)
+  if(CMAKE_STRIP)
+    add_custom_command(TARGET ${program} POST_BUILD
+                       COMMAND $<${strip_configs}:${CMAKE_STRIP}>
+                               $<${strip_configs}:$<TARGET_FILE:${program}>>
+                       COMMAND_EXPAND_LISTS
+                       VERBATIM)
+  endif()
 endforeach()
