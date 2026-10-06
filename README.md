@@ -40,8 +40,8 @@ There is also support to build the project with `cmake`.
 
 Inspiration for building with `cmake` originated from this [project](https://github.com/compnerd/swift-build-examples).
 
-`cmake` can only build Swift with the Ninja or Xcode generator, so pass `-GNinja`. The build type defaults to `Release`; pass `-DCMAKE_BUILD_TYPE=Debug` for a debug build. Unlike `make`, `cmake` builds native (not universal) binaries.
+`cmake` can only build Swift with the Ninja or Xcode generator, so pass `-GNinja`. The build type defaults to `Release`, which strips the binaries; pass `-DCMAKE_BUILD_TYPE=Debug` for an unstripped debug build. `cmake` does not support universal Swift binaries, so on macOS it builds for the host architecture only, targeting the same minimum macOS versions as `make` (11.0 for arm64, 10.15 for x86_64).
 
 ```bash
-mkdir build; cd build; cmake -GNinja ..; ninja --verbose; strip Countdown Lookup cores hello launch newpass sysinfo
+mkdir build; cd build; cmake -GNinja ..; ninja --verbose
 ```
